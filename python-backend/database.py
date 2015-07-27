@@ -28,7 +28,7 @@ def db_insert( db_collection, db_object ):
   # Get collection
   collection = db[db_collection]
 
-  insert_id = collection.insert_one(db_object)
+  insert_id = collection.insert_one(db_object).inserted_id
 
   return insert_id;
 
