@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 import database
 
@@ -14,7 +14,13 @@ def login():
 
 @app.route('/offer/add', methods=['POST'])
 def offer_add():
-    return False
+
+    if (request.form['title'] and request.form['username'] and request.form['description'] and request.form['coords']):
+        error = 'none'
+    else:
+        error = 'Bad api call'
+
+    return "offer add"
 
 @app.route('/offer/get/id')
 def offer_get_id():
@@ -22,7 +28,13 @@ def offer_get_id():
 
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):
-    return False
+
+    coords = coords.split(',')
+
+    lat = coords[0]
+    lng = coords[1]
+
+    return "get near me"
 
 @app.route('/message/send', methods=['POST'])
 def message_send():
@@ -37,4 +49,4 @@ def message_read():
     return False
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='192.168.56.102',port=5000,debug=True)
