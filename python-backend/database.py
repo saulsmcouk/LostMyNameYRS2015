@@ -32,8 +32,21 @@ def db_insert( db_collection, db_object ):
 
   return insert_id;
 
-# Database update wrapper
-
+# Database update wrapper 
+def db_update( db_collection, doc_identifier, doc_tbc ):
+  collection = db[db_collection]
+  """Update doc_identifier[{0:1}]'s doc_tbc[0] with doc_tbc[1]"""
+  collection = db[db_collection]
+  collection.update_one(
+    {doc_identifier[0]:doc_identifier[1]},
+    {
+      "$set":{
+        doc_tbc[0]:doc_tbc[1]
+        },
+      "$currentDate": {"lastModified": True}
+      }
+    )
+      
 # @todo
 
 # Database remove wrapper
