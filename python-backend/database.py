@@ -23,8 +23,19 @@ def db_find( db_collection, db_query, find_one = False ):
 
 # Database insert wrapper
 
+def db_insert( db_collection, db_object ):
+
+  # Get collection
+  collection = db[db_collection]
+
+  insert_id = collection.insert_one(db_object)
+
+  return insert_id;
+
 # Database update wrapper
+
+# @todo
 
 # Database remove wrapper
 
-print db_find('test', {'name': 'test'})
+# @todo
