@@ -26,12 +26,17 @@ def offer_get_id():
 
     return api_modules.offer.offer_get_id(request)
 
+@app.route('/offer/done')
+def offer_get_id():
+    
+    return api_modules.offer.offer_mark_as_done(request)
+
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):
 
     return api_modules.offer.offer_get_near_me(request, coords)
 
-@app.route('/message/send', methods=['GET'])
+@app.route('/message/send', methods=['POST'])
 def message_send():
 
     return api_modules.message.message_send(request)
