@@ -27,7 +27,7 @@ def offer_get_id():
     return api_modules.offer.offer_get_id(request)
 
 @app.route('/offer/done')
-def offer_get_id():
+def offer_done():
     
     return api_modules.offer.offer_mark_as_done(request)
 
