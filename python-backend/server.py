@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask.ext.socketio import SocketIO
+from flask.ext.cors import CORS
 
 import sys_modules.database as db
 
@@ -8,9 +8,7 @@ import api_modules.message
 import api_modules.login
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'lolololololo9001'
-socketio = SocketIO(app)
+cors = CORS(app);
 
 @app.route('/')
 def index():
@@ -59,6 +57,3 @@ ipting = open('ip.txt','r')
 ipforserver = ipting.readline()
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
-
-if __name__ == '__main__':
-    socketio.run(app)
