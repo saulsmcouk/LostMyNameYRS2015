@@ -23,7 +23,7 @@ def offer_get_id(request):
 
 def offer_get_near_me(request, coords):
     coords = coords.split(',')
-
+    
     lat = coords[0]
     lng = coords[1]
 
