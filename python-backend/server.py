@@ -26,6 +26,11 @@ def offer_get_id():
 
     return api_modules.offer.offer_get_id(request)
 
+@app.route('/offer/done')
+def offer_done():
+    
+    return api_modules.offer.offer_done(request)
+
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):
 
@@ -39,7 +44,7 @@ def message_send():
 @app.route('/message/inbox')
 def message_inbox():
 
-    return api_modules.message.inbox(request)
+    return api_modules.message.message_inbox(request)
 
 @app.route('/message/read', methods=['POST'])
 def message_read():
@@ -49,4 +54,4 @@ def message_read():
 ipting = open('ip.txt','r')
 ipforserver = ipting.readline()
 if __name__ == '__main__':
-    app.run(host=ipforserver,port=5000,debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True)

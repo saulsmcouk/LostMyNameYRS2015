@@ -14,10 +14,15 @@ def db_find( db_collection, db_query, find_one = False ):
     # Get collection
     collection = db[db_collection]
 
-    if (find_one):
-        result = collection.find(db_query)
+    result = []
+    
+    if (find_one == True):
+        result[0] = collection.find_one(db_query)
     else:
-        result = collection.find_one(db_query)
+        cur = collection.find(db_query)
+        
+        for doc in cur:
+            result.append(doc)
 
     return result;
 
@@ -47,8 +52,14 @@ def db_update( db_collection, doc_identifier, doc_tbc ):
         }
     )
 
-# @todo
+
 
 # Database remove wrapper
 
-# @todo
+def db_remove(db_collection, doc_identifier, just_one = False):
+    collection = db_collection
+    
+    if not just_one:
+        collection.remove({_id:doc_identifier})
+    else:
+        collection.remove({_id:doc_identifier},1)
