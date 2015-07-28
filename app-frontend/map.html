@@ -31,13 +31,12 @@
       title: name
   });
 }
-        function initializeMarker(){
-        createMarker(51.5169315,-0.0123788, "Food Bank")
-        }
-//foodBankMarker = initializeMarker(51.5169315,-0.0123788, "Food Bank")
-google.maps.event.addDomListener(window, 'load', initialize);
 
-      google.maps.event.addDomListener(window, 'load', initializeMarker);
+
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', function(){
+      createMarker(51.5169315,-0.0123788, "Food Bank")
+      });
     </script>
   </head>
   <body>
