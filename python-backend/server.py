@@ -3,6 +3,7 @@ from flask import Flask, request
 import sys_modules.database as db
 
 import api_modules.offer
+import api_modules.message
 
 app = Flask(__name__)
 
@@ -17,7 +18,7 @@ def login():
 @app.route('/offer/add', methods=['POST'])
 def offer_add():
 
-    return api_modules.offer.offer_add()
+    return api_modules.offer.offer_add(request)
 
 @app.route('/offer/get/id')
 def offer_get_id():

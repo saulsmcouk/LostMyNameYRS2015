@@ -1,4 +1,5 @@
-def offer_add():
+def offer_add(request):
+    print request.form
     return "offer add"
 
 def offer_get_id():
