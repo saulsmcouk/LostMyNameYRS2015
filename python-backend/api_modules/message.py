@@ -7,4 +7,4 @@ def message_send(request):
                             'from': message_stuff.getlist('from'),
                             'content': message_stuff.getlist('content')}
     db.db_insert("messages",message)
-    return str(message)
+    return "Message Sent"
