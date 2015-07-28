@@ -21,29 +21,28 @@ def offer_add():
 
 @app.route('/offer/get/id')
 def offer_get_id():
-    return False
+
+    return api_modules.offer.offer_get_id()
 
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):
 
-    coords = coords.split(',')
-
-    lat = coords[0]
-    lng = coords[1]
-
-    return "get near me"
+    return api_modules.offer.offer_get_near_me()
 
 @app.route('/message/send', methods=['POST'])
 def message_send():
-    return False
+
+    return api_modules.message.message_send()
 
 @app.route('/message/inbox')
 def message_inbox():
-    return False
+
+    return api_modules.message.inbox()
 
 @app.route('/message/read', methods=['POST'])
 def message_read():
-    return False
+
+    return api_modules.message.read()
 
 if __name__ == '__main__':
     app.run(host='192.168.56.102',port=5000,debug=True)
