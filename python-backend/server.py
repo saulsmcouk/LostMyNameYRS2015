@@ -51,7 +51,7 @@ def message_inbox():
 @app.route('/message/read', methods=['POST'])
 def message_read():
 
-    return api_modules.message.read(request)
+    return api_modules.message.message_read(request)
 
 ipting = open('ip.txt','r')
 ipforserver = ipting.readline()

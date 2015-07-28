@@ -47,7 +47,11 @@ locationClient.getOfferNearMe = function (latLng, callback) {
 }
 
 locationClient.setOfferDone = function (offerId, callback) {
-
+    $.post(locationClient.server + '/offer/done', {
+        id: offerId
+    }, function (data) {
+        callback(data);
+    });
 }
 
 locationClient.addOffer = function (title, desc, ttl, location, callback) {
@@ -62,15 +66,29 @@ locationClient.addOffer = function (title, desc, ttl, location, callback) {
     });
 }
 
-locationClient.sendMessage = function (username, message, callback) {
-
+locationClient.sendMessage = function (to, message, callback) {
+    $.post(locationClient.server + '/message/send', {
+        from: locationClient.user.username,
+        to: to,
+        content: message
+    }, function (data) {
+        callback(data);
+    });
 }
 
 locationClient.inbox = function (callback) {
-
+    $.get(locationClient.server + '/message/inbox', {
+        username: 'admin2'// locationClient.user.username
+    }, function (data) {
+        callback(data);
+    }, 'json');
 }
 
 locationClient.setMessageRead = function (messageId, callback) {
-
+    $.post(locationClient.server + '/message/read', {
+        id: messageId
+    }, function (data) {
+        callback(data);
+    });
 }
 
