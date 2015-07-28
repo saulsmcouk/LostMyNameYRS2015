@@ -1,5 +1,7 @@
+import json
 import pymongo
 import sys_modules.database as db
+from bson.objectid import ObjectId
 
 def offer_add(request):
     coords = request.form.getlist('location')[0].split(',')
@@ -16,10 +18,13 @@ def offer_add(request):
 
 def offer_get_id(request):
     returns = db.db_find('offers', {
-        _id: pymongo.objectid.ObjectId(request.form.getlist('id')[0])
+        '_id': ObjectId(request.args.getlist('id')[0])
     })
     
-    return returns
+    for item in returns:
+        item['_id'] = str(item['_id'])
+    
+    return json.dumps(returns)
 
 def offer_get_near_me(request, coords):
     coords = coords.split(',')
