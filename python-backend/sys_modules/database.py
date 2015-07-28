@@ -14,10 +14,15 @@ def db_find( db_collection, db_query, find_one = False ):
     # Get collection
     collection = db[db_collection]
 
-    if (find_one):
-        result = collection.find(db_query)
+    result = []
+    
+    if (find_one == True):
+        result[0] = collection.find_one(db_query)
     else:
-        result = collection.find_one(db_query)
+        cur = collection.find(db_query)
+        
+        for doc in cur:
+            result.append(doc)
 
     return result;
 
