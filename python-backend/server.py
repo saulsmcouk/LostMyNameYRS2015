@@ -1,6 +1,8 @@
 from flask import Flask, request
 
-import database
+import sys_modules.database as db
+
+import api_modules.offer
 
 app = Flask(__name__)
 
@@ -15,12 +17,7 @@ def login():
 @app.route('/offer/add', methods=['POST'])
 def offer_add():
 
-    if (request.form['title'] and request.form['username'] and request.form['description'] and request.form['coords']):
-        error = 'none'
-    else:
-        error = 'Bad api call'
-
-    return "offer add"
+    return api_modules.offer.offer_add()
 
 @app.route('/offer/get/id')
 def offer_get_id():

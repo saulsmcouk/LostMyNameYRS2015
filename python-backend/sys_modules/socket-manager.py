@@ -1,12 +1,12 @@
-import socket  
-#import the modules            
-s = socket.socket()         
+import socket
+#import the modules
+s = socket.socket()
 host = socket.gethostname() #For now
-port = 9001           
-s.bind((host, port))       
+port = 9001
+s.bind((host, port))
 s.listen(5)
 while True:
-   c, addr = s.accept()     
+   c, addr = s.accept()
    #print 'Got connection from', addr
    #Process
    c.send('bobicon')
@@ -15,6 +15,6 @@ while True:
       #recv some login stuff
    if(phrase == "add")
       #recv+work some add stuff
-   
+
    print phrase
-   c.close()               
+   c.close()
