@@ -15,12 +15,12 @@ def db_find( db_collection, db_query, find_one = False ):
     collection = db[db_collection]
 
     result = []
-    
+
     if (find_one == True):
         result[0] = collection.find_one(db_query)
     else:
         cur = collection.find(db_query)
-        
+
         for doc in cur:
             result.append(doc)
 
@@ -38,21 +38,12 @@ def db_insert( db_collection, db_object ):
     return insert_id;
 
 # Database update wrapper
-def db_update( db_collection, doc_identifier, doc_tbc ):
+def db_update( db_collection, db_query, db_update ):
     collection = db[db_collection]
-    """Update doc_identifier[{0:1}]'s doc_tbc[0] with doc_tbc[1]"""
-    collection = db[db_collection]
-    collection.update_one(
-        {doc_identifier[0]:doc_identifier[1]},
-        {
-        "$set":{
-                doc_tbc[0]:doc_tbc[1]
-            },
-        "$currentDate": {"lastModified": True}
-        }
-    )
 
+    update = collection.update(db_query, db_update);
 
+    return update;
 
 # Database remove wrapper
 
@@ -60,7 +51,9 @@ def db_remove(db_collection, doc_identifier, just_one = False):
 
     collection = db[db_collection]
     if not just_one:
-        collection.remove({'_id':doc_identifier})
+        collection.remove(doc_identifier)
 
     else:
-        collection.remove({'_id':doc_identifier},1)
+        collection.remove(doc_identifier,1)
+
+    return "ok"

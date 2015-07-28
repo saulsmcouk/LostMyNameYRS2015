@@ -1,4 +1,6 @@
-$(document).ready(function() {
+'use strict';
+
+$(document).ready(function () {
 
 });
 
@@ -14,12 +16,12 @@ locationClient.user = {};
 locationClient.user.username = 'admin';
 
 // Current location latLng
-locationClient.currentLocation = [51.48,0];
+locationClient.currentLocation = [51.48, 0];
 
 // General functions
 
 locationClient.latLngtoString = function (latLng) {
-    return latLng[0] + ',' + latLng[1]
+    return latLng[0] + ',' + latLng[1];
 };
 
 locationClient.latLngtoArray = function (latLng) {
@@ -35,7 +37,7 @@ locationClient.getOfferById = function (offerId, callback) {
         callback(data);
     });
 
-}
+};
 
 locationClient.getOfferNearMe = function (latLng, callback) {
 
@@ -44,11 +46,15 @@ locationClient.getOfferNearMe = function (latLng, callback) {
     $.get(locationClient.server + '/offer/get/near_me/' + latLng, function (data) {
         callback(data);
     }, 'json');
-}
+};
 
 locationClient.setOfferDone = function (offerId, callback) {
-
-}
+    $.post(locationClient.server + '/offer/done', {
+        id: offerId
+    }, function (data) {
+        callback(data);
+    });
+};
 
 locationClient.addOffer = function (title, desc, ttl, location, callback) {
     $.post(locationClient.server + '/offer/add', {
@@ -60,17 +66,31 @@ locationClient.addOffer = function (title, desc, ttl, location, callback) {
     }, function (data) {
         callback(data);
     });
-}
+};
 
-locationClient.sendMessage = function (username, message, callback) {
-
-}
+locationClient.sendMessage = function (to, message, callback) {
+    $.post(locationClient.server + '/message/send', {
+        from: locationClient.user.username,
+        to: to,
+        content: message
+    }, function (data) {
+        callback(data);
+    });
+};
 
 locationClient.inbox = function (callback) {
-
-}
+    $.get(locationClient.server + '/message/inbox', {
+        username: 'admin2'// locationClient.user.username
+    }, function (data) {
+        callback(data);
+    }, 'json');
+};
 
 locationClient.setMessageRead = function (messageId, callback) {
-
-}
+    $.post(locationClient.server + '/message/read', {
+        id: messageId
+    }, function (data) {
+        callback(data);
+    });
+};
 

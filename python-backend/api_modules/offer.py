@@ -5,8 +5,8 @@ from bson.objectid import ObjectId
 
 def offer_add(request):
     coords = request.form.getlist('location')[0].split(',')
-    coords_array=[float(coords[0]),float(coords[1])]
-    offer= {
+    coords_array =[float(coords[0]),float(coords[1])]
+    offer = {
         'title': request.form.getlist('title')[0],
         'description': request.form.getlist('description')[0],
         'username': request.form.getlist('username')[0],
@@ -48,7 +48,7 @@ def offer_done(request):
 
     """Deletes the passed offer. Requires the offer id to be passed."""
 
-    db.db_remove('offers', request.form.getlist("id")[0], True)
+    db.db_remove('offers', {'_id': ObjectId(request.form.getlist("id")[0])}, True)
     return "did it"
 
 
