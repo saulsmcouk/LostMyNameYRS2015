@@ -1,3 +1,4 @@
+import pymongo
 import sys_modules.database as db
 
 def offer_add(request):
@@ -11,12 +12,14 @@ def offer_add(request):
         'location': coords_array
     }
     
-    db.db_insert('offers',offer)
-    
-    return "offer add"
+    return db.db_insert('offers',offer)
 
 def offer_get_id(request):
-    return "offer get id"
+    returns = db.db_find('offers', {
+        _id: pymongo.objectid.ObjectId(request.form.getlist('id')[0])
+    })
+    
+    return returns
 
 def offer_get_near_me(request, coords):
     coords = coords.split(',')
