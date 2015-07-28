@@ -31,7 +31,7 @@ def offer_near_me(coords):
 
     return api_modules.offer.offer_get_near_me(request, coords)
 
-@app.route('/message/send', methods=['POST'])
+@app.route('/message/send', methods=['GET'])
 def message_send():
 
     return api_modules.message.message_send(request)
