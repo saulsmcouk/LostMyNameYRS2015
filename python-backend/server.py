@@ -39,7 +39,7 @@ def message_send():
 @app.route('/message/inbox')
 def message_inbox():
 
-    return api_modules.message.inbox(request)
+    return api_modules.message.message_inbox(request)
 
 @app.route('/message/read', methods=['POST'])
 def message_read():
