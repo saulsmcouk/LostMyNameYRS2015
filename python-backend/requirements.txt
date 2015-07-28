@@ -1,3 +1,2 @@
-LocationServer
 pymongo==3.0.3
 flask==0.10.1
