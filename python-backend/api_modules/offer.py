@@ -14,7 +14,7 @@ def offer_add(request):
         'location': coords_array
     }
 
-    return db.db_insert('offers',offer)
+    return str(db.db_insert('offers',offer))
 
 def offer_get_id(request):
     returns = db.db_find('offers', {
@@ -50,6 +50,6 @@ def offer_done(request):
 
     db.db_remove('offers', request.form.getlist("id")[0], True)
     return "did it"
-    
 
-    
+
+
