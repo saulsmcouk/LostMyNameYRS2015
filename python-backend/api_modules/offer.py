@@ -10,9 +10,9 @@ def offer_add(request):
         'ttl': request.form.getlist('ttl')[0],
         'location': coords_array
     }
-    
+
     db.db_insert('offers',offer)
-    
+
     return "offer add"
 
 def offer_get_id(request):
@@ -23,5 +23,10 @@ def offer_get_near_me(request, coords):
 
     lat = coords[0]
     lng = coords[1]
+
+    returns = db.db_find( 'offers', {
+        'location.0': { '$gt': lat + 1, '$lt': lat - 1 },
+        'location.1': { '$gt': lng + 1, '$lt': lng - 1 },
+    }
 
     return "get near me"
