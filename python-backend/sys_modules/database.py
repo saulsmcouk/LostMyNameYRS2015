@@ -57,9 +57,10 @@ def db_update( db_collection, doc_identifier, doc_tbc ):
 # Database remove wrapper
 
 def db_remove(db_collection, doc_identifier, just_one = False):
-    collection = db_collection
-    
-    if not just_one:   
-        collection.remove({_id:doc_identifier})
+
+    collection = db[db_collection]
+    if not just_one:
+        collection.remove({'_id':doc_identifier})
+
     else:
-        collection.remove({_id:doc_identifier},1)
+        collection.remove({'_id':doc_identifier},1)

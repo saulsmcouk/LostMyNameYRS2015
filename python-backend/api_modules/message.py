@@ -27,4 +27,5 @@ def message_read(request):
     message_id = request.form.getlist('id')[0]
     
     db_update(messages, message_id, ["read","true"])
+    return "done"
     

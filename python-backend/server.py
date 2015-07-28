@@ -26,8 +26,8 @@ def offer_get_id():
 
     return api_modules.offer.offer_get_id(request)
 
-@app.route('/offer/done',methods=['POST'])
-def offer_done():
+@app.route('/offer/done', methods=['POST'])
+offer_done():
     
     return api_modules.offer.offer_done(request)
 
