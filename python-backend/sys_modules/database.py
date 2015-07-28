@@ -59,7 +59,7 @@ def db_update( db_collection, doc_identifier, doc_tbc ):
 def db_remove(db_collection, doc_identifier, just_one = False):
     collection = db_collection
     
-    if not just_one:
+    if not just_one:   
         collection.remove({_id:doc_identifier})
     else:
         collection.remove({_id:doc_identifier},1)

@@ -21,3 +21,10 @@ def message_inbox(request):
         message['_id'] = str(message['_id'])
     
     return json.dumps(all_messages)
+
+def message_read(request):
+    """Requires you to pass the message _id"""
+    message_id = request.form.getlist('id')[0]
+    
+    db_update(messages, message_id, ["read","true"])
+    
