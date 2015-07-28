@@ -36,6 +36,7 @@ def offer_get_near_me(request, coords):
 
 def offer_done(request):
     """Deletes the passed offer. Requires the offer id to be passed."""
-    db.db_remove("offers", request.form.getlist("doc_identifier")[0], True)
+    db.db_remove('offers', request.form.getlist("id")[0], True)
+    return "did it"
     
     
