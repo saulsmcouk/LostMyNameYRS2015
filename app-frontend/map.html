@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdZeIsWeo51oL6ncknMn6cSPGPfUdKM8">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 3
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+
+      function createMarker(lat, long, name) {
+  var myLatlng = new google.maps.LatLng(lat,long);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: name
+  });
+}
+        function initializeMarker(){
+        createMarker(51.5169315,-0.0123788, "Food Bank")
+        }
+//foodBankMarker = initializeMarker(51.5169315,-0.0123788, "Food Bank")
+google.maps.event.addDomListener(window, 'load', initialize);
+
+      google.maps.event.addDomListener(window, 'load', initializeMarker);
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
+  </body>
+</html>
