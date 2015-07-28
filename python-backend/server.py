@@ -29,7 +29,7 @@ def offer_get_id():
 @app.route('/offer/done')
 def offer_done():
     
-    return api_modules.offer.offer_mark_as_done(request)
+    return api_modules.offer.offer_done(request)
 
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):

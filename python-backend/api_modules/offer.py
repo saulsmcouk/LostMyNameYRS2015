@@ -32,3 +32,4 @@ def offer_get_near_me(request, coords):
 def offer_done(request):
     """Deletes the passed offer. Requires the offer id to be parsed."""
     
+    
