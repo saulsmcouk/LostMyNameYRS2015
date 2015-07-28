@@ -49,4 +49,4 @@ def message_read():
 ipting = open('ip.txt','r')
 ipforserver = ipting.readline()
 if __name__ == '__main__':
-    app.run(host=ipforserver,port=5000,debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True)
