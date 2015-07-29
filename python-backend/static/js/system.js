@@ -18,7 +18,7 @@ locationClient.user.username = 'admin';
 // Current location latLng
 loc = navigator.geolocation.getCurrentPosition(readPosition);
 function readPosition(pos){
- return [pos.coords.latitude,pos.coords.longditude];
+ return [pos.coords.latitude,pos.coords.longitude];
 }
 
 myLocation = readPosition(loc);
