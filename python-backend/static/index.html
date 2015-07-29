@@ -20,32 +20,35 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: { lat: 51.5286416, lng: -0.1015987},
+          center: {
+            lat: 51.5286416,
+            lng: -0.1015987
+          },
           zoom: 8
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+          mapOptions);
       }
 
       function createMarker(lat, long, name) {
-  var myLatlng = new google.maps.LatLng(lat,long);
-  var mapOptions = {
-    zoom: 10,
-    center: myLatlng
-  }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var myLatlng = new google.maps.LatLng(lat, long);
+        var mapOptions = {
+          zoom: 10,
+          center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: name
-  });
-}
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: name
+        });
+      }
 
 
-google.maps.event.addDomListener(window, 'load', initialize);
-google.maps.event.addDomListener(window, 'load', function(){
-      createMarker(51.5169315,-0.0123788, "Food Bank")
+      google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'load', function() {
+        createMarker(51.5169315, -0.0123788, "Food Bank")
       });
     </script>
 </head>
@@ -77,7 +80,7 @@ google.maps.event.addDomListener(window, 'load', function(){
 
     </div>
 
-    <div class="app-view" id="app-view-donating">
+    <div    class="app-view" id="app-view-donating">
 
     </div>
     <div id="map-canvas"></div>
@@ -85,3 +88,4 @@ google.maps.event.addDomListener(window, 'load', function(){
 </body>
 
 </html>
+
