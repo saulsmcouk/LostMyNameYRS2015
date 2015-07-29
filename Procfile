@@ -1,0 +1,1 @@
+web: gunicorn python-backend/server:app --log-file=-
