@@ -25,37 +25,37 @@ def login():
 @app.route('/offer/add', methods=['POST'])
 def offer_add():
 
-    return api_modules.offer.offer_add(request)
+    return api_modules.offer.offer_add(flask.request)
 
 @app.route('/offer/get/id')
 def offer_get_id():
 
-    return api_modules.offer.offer_get_id(request)
+    return api_modules.offer.offer_get_id(flask.request)
 
 @app.route('/offer/done', methods=['POST'])
 def offer_done():
 
-    return api_modules.offer.offer_done(request)
+    return api_modules.offer.offer_done(flask.request)
 
 @app.route('/offer/get/near_me/<coords>')
 def offer_near_me(coords):
 
-    return api_modules.offer.offer_get_near_me(request, coords)
+    return api_modules.offer.offer_get_near_me(flask.request, coords)
 
 @app.route('/message/send', methods=['POST'])
 def message_send():
 
-    return api_modules.message.message_send(request)
+    return api_modules.message.message_send(flask.request)
 
 @app.route('/message/inbox')
 def message_inbox():
 
-    return api_modules.message.message_inbox(request)
+    return api_modules.message.message_inbox(flask.request)
 
 @app.route('/message/read', methods=['POST'])
 def message_read():
 
-    return api_modules.message.message_read(request)
+    return api_modules.message.message_read(flask.request)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
