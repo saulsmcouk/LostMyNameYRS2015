@@ -1,3 +1,4 @@
+import flask
 import json
 import pymongo
 import sys_modules.database as db
@@ -27,22 +28,23 @@ def offer_get_id(request):
     return json.dumps(returns)
 
 def offer_get_near_me(request, coords):
-    coords = coords.split(',')
+    #coords = coords.split(',')
 
-    lat = coords[0]
-    lng = coords[1]
+    #lat = coords[0]
+    #lng = coords[1]
 
     # this is a bit silly, but find things in a squareish range
     # of 1 deg lat and 1 deg long from the given location
-    returns = db.db_find( 'offers', {
-        'location.0': { '$gt': float(lat) - 1, '$lt': float(lat) + 1 },
-        'location.1': { '$gt': float(lng) - 1, '$lt': float(lng) + 1 },
-    })
+    #returns = db.db_find( 'offers', {
+     #   'location.0': { '$gt': float(lat) - 1, '$lt': float(lat) + 1 },
+      #  'location.1': { '$gt': float(lng) - 1, '$lt': float(lng) + 1 },
+    #})
 
-    for item in returns:
-        item['_id'] = str(item['_id'])
+    #for item in returns:
+     #   item['_id'] = str(item['_id'])
 
-    return json.dumps(returns)
+    #return json.dumps(returns)
+    return flask.render_template("offersNearMe.html")
 
 def offer_done(request):
 
