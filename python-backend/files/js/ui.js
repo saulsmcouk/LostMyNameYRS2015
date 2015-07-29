@@ -9,4 +9,5 @@ function hideAllViews() {
 
 $(document).ready(function () {
   hideAllViews();
+  switchView("landing");
 });
