@@ -1,8 +1,6 @@
 import os
 from pymongo import MongoClient
 
-client = MongoClient()
-
 uri = os.environ.get('MONGOLAB_URI')
 if (uri):
     client = MongoClient(uri)
@@ -10,7 +8,7 @@ else:
     client = MongoClient('localhost', 27017)
 
 # `community` database
-db = client.community;
+db = client.get_default_database();
 
 # Database find wrapper
 
