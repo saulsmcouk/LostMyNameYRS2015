@@ -12,7 +12,7 @@ cors = CORS(app);
 
 @app.route('/')
 def index():
-    return "LocationServer"
+    return app.send_static_file("/static/index.html")
 
 @app.route('/login')
 def login():
