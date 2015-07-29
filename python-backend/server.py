@@ -14,6 +14,10 @@ cors = CORS(app);
 def index():
     return flask.render_template('index.html')
 
+@app.route('/files/<path:path>')
+def send_js(path):
+  return flask.send_from_directory('files', path)
+
 @app.route('/login')
 def login():
     return False
