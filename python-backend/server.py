@@ -9,6 +9,7 @@ import api_modules.message
 import api_modules.login
 
 app = flask.Flask(__name__, static_folder='files')
+app.debug = True
 cors = CORS(app);
 
 @app.route('/')
