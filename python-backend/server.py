@@ -1,5 +1,5 @@
-from flask import Flask, request
-#from flask.ext.cors import CORS
+import flask
+from flask.ext.cors import CORS
 
 import sys_modules.database as db
 
@@ -7,12 +7,12 @@ import api_modules.offer
 import api_modules.message
 import api_modules.login
 
-app = Flask(__name__)
-#cors = CORS(app);
+app = flask.Flask(__name__)
+cors = CORS(app);
 
 @app.route('/')
 def index():
-    return app.send_static_file("index.html")
+    return flask.render_template('index.html')
 
 @app.route('/login')
 def login():
