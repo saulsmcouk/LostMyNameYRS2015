@@ -1,3 +1,4 @@
 *.pyc
 .DS_Store
 ip.txt
+python-backend/venv
