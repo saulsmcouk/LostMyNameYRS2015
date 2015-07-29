@@ -53,7 +53,5 @@ def message_read():
 
     return api_modules.message.message_read(request)
 
-ipting = open('ip.txt','r')
-ipforserver = ipting.readline()
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
