@@ -11,6 +11,43 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/system.js"></script>
     <script src="js/ui.js"></script>
+    <style type="text/css">
+      html, body, #map-canvas { height: 65%; width: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdZeIsWeo51oL6ncknMn6cSPGPfUdKM8">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 51.5286416, lng: -0.1015987},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+
+      function createMarker(lat, long, name) {
+  var myLatlng = new google.maps.LatLng(lat,long);
+  var mapOptions = {
+    zoom: 10,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: name
+  });
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', function(){
+      createMarker(51.5169315,-0.0123788, "Food Bank")
+      });
+    </script>
 </head>
 
 <body>
@@ -20,7 +57,7 @@
         <table width="100%">
             <tr style="vertical-align:middle;">
                 <td class="mui-appbar-height">Kollect</td>
-                <td class="mui-appbar-height" align="right">Right Side</td>
+                <td class="mui-appbar-height" align="right">Chat</td>
             </tr>
         </table>
     </div>
@@ -43,6 +80,7 @@
     <div class="app-view" id="app-view-donating">
 
     </div>
+    <div id="map-canvas"></div>
 
 </body>
 
