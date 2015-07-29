@@ -44,7 +44,7 @@ def offer_get_near_me(request, coords):
      #   item['_id'] = str(item['_id'])
 
     #return json.dumps(returns)
-    return flask.render_template("offersNearMe.html")
+    return flask.render_template('offersNearMe.html')
 
 def offer_done(request):
 
