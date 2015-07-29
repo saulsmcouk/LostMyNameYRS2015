@@ -64,15 +64,21 @@ google.maps.event.addDomListener(window, 'load', function(){
     </div>
 
     <!--- Main switchable views --->
-    <div class="app-view" id="app-view-finding">
+    <div class="app-view" id="app-view-landing">
 
-      {% include 'offersNearMe.html' %}
+      {% include 'landing_view.html' %}
 
     </div>
 
-    <div class="app-view" id="app-view-donating">
+    <div class="app-view" id="app-view-giving">
 
-      {% include 'offersNearMe.html' %}
+      {% include 'giving_view.html' %}
+
+    </div>
+
+    <div class="app-view" id="app-view-finding">
+
+      {% include 'finding_view.html' %}
 
     </div>
 
