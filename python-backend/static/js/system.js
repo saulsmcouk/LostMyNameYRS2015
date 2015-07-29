@@ -7,7 +7,7 @@ $(document).ready(function () {
 // LocationClient namespace
 var locationClient = {};
 
-locationClient.server = 'http://local:5000';
+locationClient.server = 'http://local:5000';//Change for heroku, etc
 
 // User object
 locationClient.user = {};
@@ -16,7 +16,14 @@ locationClient.user = {};
 locationClient.user.username = 'admin';
 
 // Current location latLng
-locationClient.currentLocation = [51.48, 0];
+loc = navigator.geolocation.getCurrentPosition(readPosition);
+function readPosition(pos){
+ return [pos.coords.latitude,pos.coords.longditude];
+}
+
+myLocation = readPosition(loc);
+
+locationClient.currentLocation = myLocation;
 
 // General functions
 
