@@ -7,16 +7,16 @@ import api_modules.offer
 import api_modules.message
 import api_modules.login
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder='files')
 cors = CORS(app);
 
 @app.route('/')
 def index():
     return flask.render_template('index.html')
 
-@app.route('/files/<path:path>')
-def send_js(path):
-    return flask.send_from_directory('files', path)
+@app.route('/files/<path:filename>')
+def send_js(filename):
+    return flask.send_from_directory(app.static_folder, filename)
 
 @app.route('/login')
 def login():

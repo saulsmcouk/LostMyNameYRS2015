@@ -1,9 +1,11 @@
+window.data = {};
 function switchView(view_name) {
   hideAllViews();
   $('#app-view-' + view_name).show();
   if (view_name == "finding") {
     console.log("finding");
     google.maps.event.trigger(window.map, 'resize');
+    drawPins();
     console.log("resized");
   }
 
@@ -44,7 +46,7 @@ function submitOffer() {
   // and then only add the one in code for your demo
   // That way you would only need one placeholder location like the one below.
 
-  var location = [0, 0];
+  var location = [51.5333, 0.0837];
 
 
 
@@ -69,6 +71,7 @@ function renderOffers() {
     // When writing these, I recommend you use console.log(data), where data is whatever you called that callback function parameter
     // then use dev console to look at the object parameters
 
+    window.data.offers = offers
     var offerspanehtml = '';
 
     // For (each) offer in offers
@@ -85,17 +88,11 @@ function renderOffers() {
       offerspanehtml += offer.location;
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
-      var pos = new google.maps.LatLng(offer.location[0], offer.location[1]);
+      drawPins();
 
       offerspanehtml += '</div>';
       console.log(offer.location);
       //Add a marker
-      var marker = new google.maps.Marker({
-        position: pos,
-        map: window.map,
-        title: offer.title
-      });
-      marker.setMap(window.map);
       console.log("setmarker");
     });
 
@@ -111,10 +108,8 @@ function sendMessage(){
 }
 
 function renderMessages() {
-  alert("it ran");
   locationClient.inbox(function(messages){
   console.log(messages);
-  console.log(messages[0].content);
   //Assemble the html for the inbox
   inboxContent = '';
   var arrayLength = messages.length;
@@ -130,4 +125,16 @@ function renderMessages() {
   });
 
 
+}
+
+function drawPins () {
+  window.data.offers.forEach(function(offer) {
+    var pos = new google.maps.LatLng(offer.location[0], offer.location[1]);
+    var marker = new google.maps.Marker({
+      position: pos,
+      map: window.map,
+      title: offer.title
+    });
+    marker.setMap(window.map);
+  })
 }
