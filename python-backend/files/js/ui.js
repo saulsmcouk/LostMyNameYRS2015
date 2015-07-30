@@ -1,7 +1,11 @@
 function switchView(view_name) {
   hideAllViews();
   $('#app-view-' + view_name).show();
-
+  if(view_name=="finding"){
+    console.log("finding");
+    google.maps.event.trigger(window.map, 'resize');
+    console.log("resized");
+  }
 
 };
 
@@ -69,17 +73,25 @@ function renderOffers() {
 
     // For (each) offer in offers
     offers.forEach(function (offer) {
-
+      //console.log("iter offer");
       if (!offer.description) {
         offer.description = "";
       }
 
       // Construct the HTML as a JS String
-      offerspanehtml += '<div class="offer">';
-      offerspanehtml += '  <div class="offer-title">' + offer.title + '</div';
-      offerspanehtml += '  <div class="offer-description">' + offer.description + '</div';
-      offerspanehtml += '  <div class="offer-image">' + '<img src="http://placehold.it/300/300" />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
+      offerspanehtml += '<div class="offer row">';
+      offerspanehtml += '  <div class="offer-title col-md-4"><h1>' + offer.title + '</h1></div';
+      offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
+      offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
+      var pos = new google.LatLng(offer.location);
       offerspanehtml += '</div>';
+      console.log(offer.location);
+      //Add a marker
+      var marker = new google.maps.Marker({
+      position: pos,
+      map: window.map,
+      title: offer.title
+  });
 
     });
 
@@ -87,4 +99,7 @@ function renderOffers() {
     $('.show-offers').html(offerspanehtml);
 
   });
+}
+function renderMessages(){
+
 }
