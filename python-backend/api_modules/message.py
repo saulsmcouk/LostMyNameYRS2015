@@ -11,7 +11,7 @@ def message_send(request):
         'content': message_stuff.getlist('content')
     }
     db.db_insert("messages",message)
-    sms.send_sms("07581162752", message_stuff.getlist('content'))
+    sms.send_sms("123456", message_stuff.getlist('content'))
     return "Message Sent"
 
 def message_inbox(request):
