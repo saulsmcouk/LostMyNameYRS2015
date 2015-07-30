@@ -63,7 +63,7 @@ function submitOffer() {
   if (title && desc && ttl && location) {
 
     locationClient.addOffer(title, desc, ttl, location, function() {
-      switchView('landing');
+      window.location.reload();
     });
 
   }
@@ -96,7 +96,7 @@ function renderOffers() {
       offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div>';
       offerspanehtml += offer.location;
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div>';
-        offerspanehtml += '<div class="col-md-3"><button class="btn">Claim</button><button class="btn">Claimed?</button></div>'
+        offerspanehtml += '<div class="col-md-3"><button class="btn" onclick="claimOffer(\'' + offer._id + '\')">Claim</button><button class="btn">Claimed?</button></div>'
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
       drawPins();
 
@@ -133,6 +133,13 @@ function renderMessages() {
   });
 
 
+}
+
+function claimOffer(id) {
+  locationClient.setOfferDone(id, function (returns) {
+    alert("You have claimed this offer!");
+    window.location.reload();
+  });
 }
 
 function drawPins () {
