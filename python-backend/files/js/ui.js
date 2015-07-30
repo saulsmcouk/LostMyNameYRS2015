@@ -18,7 +18,7 @@ $(document).ready(function () {
   switchView("landing");
 
   renderOffers();
-
+  renderMessages();
   console.log("readu");
   $("#Make_offer").submit(
   function (e){
@@ -83,15 +83,17 @@ function renderOffers() {
       offerspanehtml += '  <div class="offer-title col-md-4"><h1>' + offer.title + '</h1></div';
       offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
-      var pos = new google.LatLng(offer.location);
+      //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
+  var pos = new google.maps.LatLng(-25.363882,131.044922);
+
       offerspanehtml += '</div>';
-      console.log(offer.location);
-      //Add a marker
-      var marker = new google.maps.Marker({
-      position: pos,
-      map: window.map,
-      title: offer.title
-  });
+//      console.log(offer.location);
+//      //Add a marker
+//      var marker = new google.maps.Marker({
+//      position: pos,
+//      map: window.map,
+//      title: offer.title
+ // });
 
     });
 
@@ -101,5 +103,14 @@ function renderOffers() {
   });
 }
 function renderMessages(){
+
+locationClient.inbox = function (callback) {
+  $.get(locationClient.server + '/message/inbox', {
+    username: locationClient.user.username // locationClient.user.username
+  }, function (data) {
+    callback(data);
+    console.log(data);
+  }, 'json');
+};
 
 }
