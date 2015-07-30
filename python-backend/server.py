@@ -16,7 +16,7 @@ def index():
 
 @app.route('/files/<path:path>')
 def send_js(path):
-  return flask.send_from_directory('files', path)
+    return flask.send_from_directory('files', path)
 
 @app.route('/login')
 def login():
