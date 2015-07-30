@@ -1,0 +1,63 @@
+.navbar-header, .navbar-default {
+  background-color: darkgreen;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.navbar-header a.navbar-brand,
+.navbar-header a.navbar-brand:hover,
+.navbar-header a.navbar-brand:active,
+.navbar-header a.navbar-brand:focus,
+.navbar-header a.navbar-brand:visited {
+  color: white;
+}
+button.btn.btn-success {
+  background: lightgray;
+  border: none;
+  color: green;
+  text-transform: uppercase;
+  font-size: 20px;
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+btton.btn-btn-success:hover {
+  box-shadow: none;
+}
+div#map-canvas {
+  transform: translateZ(0px);
+  background-color: rgb(229, 227, 223);
+  height: 275px !important;
+  margin: 0 auto;
+  margin-top: -15px;
+}
+div#app-view-finding {
+  display: block;
+  background-color: lightgray;
+  margin-left: -15px;
+  margin-right: -15px;
+  min-height: 1000px;
+}
+.offer {
+  background-color: white;
+  margin-left: 15px;
+  margin-right: 15px;
+  min-height: 200px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.offer img {
+  /*  float: right;*/
+  width: 100%;
+}
+.offer-title h1 {
+  padding-top: 10px;
+  margin-left: 10px;
+}
+.offer button.btn {
+  background: none;
+  color: darkgreen;
+  text-transform: uppercase;
+  clear: none;
+  display: inline;
+  width: initial;
+  text-align: right;
+}
