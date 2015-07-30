@@ -83,10 +83,11 @@ function renderOffers() {
 
       // Construct the HTML as a JS String
       offerspanehtml += '<div class="offer row">';
-      offerspanehtml += '  <div class="offer-title col-md-4"><h1>' + offer.title + '</h1></div';
-      offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
+      offerspanehtml += '  <div class="offer-title col-md-4"><h1>' + offer.title + '</h1></div>';
+      offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div>';
       offerspanehtml += offer.location;
-      offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
+      offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div>';
+        offerspanehtml += '<div class="col-md-3"><button class="btn">Claim</button><button class="btn">Claimed?</button></div>'
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
       drawPins();
 
