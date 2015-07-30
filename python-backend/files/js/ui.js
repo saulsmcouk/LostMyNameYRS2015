@@ -3,10 +3,10 @@ function switchView(view_name) {
   hideAllViews();
   $('#app-view-' + view_name).show();
   if (view_name == "finding") {
-    console.log("finding");
+
     google.maps.event.trigger(window.map, 'resize');
     drawPins();
-    console.log("resized");
+
   }
 
 };
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   renderOffers();
   renderMessages();
-  console.log("readu");
+
   $("#Make_offer").submit(
     function(e) {
       submitOffer();
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 
 function submitOffer() {
-  console.log("so");
+
   var title = $('#title').val();
   var desc = $('#description').val();
   var ttl = $('#ttl').val();
@@ -63,7 +63,6 @@ function submitOffer() {
   if (title && desc && ttl && location) {
 
     locationClient.addOffer(title, desc, ttl, location, function() {
-      console.log("addoffer has run");
       switchView('landing');
     });
 
@@ -102,7 +101,7 @@ function renderOffers() {
       drawPins();
 
       offerspanehtml += '</div>';
-      console.log(offer.location);
+
       //Add a marker
       console.log("setmarker");
     });
@@ -114,13 +113,11 @@ function renderOffers() {
 }
 
 function sendMessage(to,from,content){
-  console.log("sendMesage");
   locationClient.sendMessage(to,from,content,function(){});
 }
 
 function renderMessages() {
   locationClient.inbox(function(messages){
-  console.log(messages);
   //Assemble the html for the inbox
   inboxContent = '';
   var arrayLength = messages.length;
