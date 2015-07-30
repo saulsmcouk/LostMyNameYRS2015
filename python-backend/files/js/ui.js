@@ -1,7 +1,7 @@
 function switchView(view_name) {
   hideAllViews();
   $('#app-view-' + view_name).show();
-  if(view_name=="finding"){
+  if (view_name == "finding") {
     console.log("finding");
     google.maps.event.trigger(window.map, 'resize');
     console.log("resized");
@@ -13,7 +13,7 @@ function hideAllViews() {
   $('.app-view').hide();
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
   hideAllViews();
   switchView("landing");
 
@@ -21,12 +21,12 @@ $(document).ready(function () {
   renderMessages();
   console.log("readu");
   $("#Make_offer").submit(
-  function (e){
-    submitOffer();
-    e.preventDefault();
-    return false;
+    function(e) {
+      submitOffer();
+      e.preventDefault();
+      return false;
 
-  }
+    }
   );
 
 });
@@ -44,13 +44,13 @@ function submitOffer() {
   // and then only add the one in code for your demo
   // That way you would only need one placeholder location like the one below.
 
-  var location = [50.6002,0.9];
+  var location = [50.6002, 0.9];
 
 
 
   if (title && desc && ttl && location) {
 
-    locationClient.addOffer(title, desc, ttl, location, function () {
+    locationClient.addOffer(title, desc, ttl, location, function() {
       console.log("addoffer has run");
       switchView('landing');
     });
@@ -64,7 +64,7 @@ function submitOffer() {
 function renderOffers() {
   // Get offers, as an object (comes from API).
   // function (offers) is the callback function. It runs once the AJAX request is made.
-  locationClient.getOfferNearMe(locationClient.currentLocation, function (offers) {
+  locationClient.getOfferNearMe(locationClient.currentLocation, function(offers) {
 
     // When writing these, I recommend you use console.log(data), where data is whatever you called that callback function parameter
     // then use dev console to look at the object parameters
@@ -72,7 +72,7 @@ function renderOffers() {
     var offerspanehtml = '';
 
     // For (each) offer in offers
-    offers.forEach(function (offer) {
+    offers.forEach(function(offer) {
       //console.log("iter offer");
       if (!offer.description) {
         offer.description = "";
@@ -84,18 +84,18 @@ function renderOffers() {
       offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
-  var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
+      var pos = new google.maps.LatLng(offer.location[0], offer.location[1]);
 
       offerspanehtml += '</div>';
       console.log(offer.location);
       //Add a marker
       var marker = new google.maps.Marker({
-      position: pos,
-      map: window.map,
-      title: offer.title
- });
-marker.setMap(window.map);
-console.log("setmarker");
+        position: pos,
+        map: window.map,
+        title: offer.title
+      });
+      marker.setMap(window.map);
+      console.log("setmarker");
     });
 
     // Replace the HTML of anything with the class .show-offers with our constructed template
@@ -103,15 +103,18 @@ console.log("setmarker");
 
   });
 }
-function renderMessages(){
 
-locationClient.inbox = function (callback) {
-  $.get(locationClient.server + '/message/inbox', {
-    username: locationClient.user.username // locationClient.user.username
-  }, function (data) {
-    callback(data);
-    console.log(data);
-  }, 'json');
-};
+function renderMessages() {
+  alert("it ran");
+
+  locationClient.inbox = function(callback) {
+    $.get(locationClient.server + '/message/inbox', {
+      username: locationClient.user.username // locationClient.user.username
+    }, function(data) {
+      callback(data);
+      alert(data);
+      console.log(data + " - messages");
+    }, 'json');
+  };
 
 }

@@ -2,66 +2,75 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--Load bootstrapp -->
-    <link rel="stylesheet" href="files/views/bootstrap.min.css">
+  <link rel="stylesheet" href="files/views/bootstrap.min.css">
 
-    <!-- load our stuffs -->
-    <script src="/files/js/jquery-2.1.4.min.js"></script>
-    <script src="/files/js/system.js"></script>
-    <script src="/files/js/ui.js"></script>
-    <style type="text/css">
-      html, body, #map-canvas { height: 65%; width: 100%; margin: 0; padding: 0;}
-      .btn{
-        height: 90%;
-        width: 90%;
-        display: block;
+  <!-- load our stuffs -->
+  <script src="/files/js/jquery-2.1.4.min.js"></script>
+  <script src="/files/js/system.js"></script>
+  <script src="/files/js/ui.js"></script>
+  <style type="text/css">
+    html,
+    body,
+    #map-canvas {
+      height: 65%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .btn {
+      height: 90%;
+      width: 90%;
+      display: block;
+    }
+  </style>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdZeIsWeo51oL6ncknMn6cSPGPfUdKM8&">
+  </script>
+  <script type="text/javascript">
+    function initialize() {
+      var mapOptions = {
+        center: {
+          lat: 51.5286416,
+          lng: -0.1015987
+        },
+        zoom: 8
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      window.map = map;
+    }
+
+    function createMarker(lat, long, name) {
+      var myLatlng = new google.maps.LatLng(lat, long);
+      var mapOptions = {
+        zoom: 10,
+        center: myLatlng
       }
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdZeIsWeo51oL6ncknMn6cSPGPfUdKM8&">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: 51.5286416, lng: -0.1015987},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  window.map = map;
-      }
 
-      function createMarker(lat, long, name) {
-  var myLatlng = new google.maps.LatLng(lat,long);
-  var mapOptions = {
-    zoom: 10,
-    center: myLatlng
-  }
-
-      }
+    }
 
 
 
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 </head>
 
 <body>
 
-    <!--- Main Appbar --->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
+  <!--- Main Appbar --->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
         Kollect
       </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <div class="container">
     <!--- Main switchable views --->
     <div class="app-view" id="app-view-landing">
@@ -81,8 +90,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
       {% include 'finding_view.html' %}
 
     </div>
-</div>
-    <!-- Views that need a map put this in:<div id="map-canvas"></div> -->
+  </div>
+  <!-- Views that need a map put this in:<div id="map-canvas"></div> -->
 
 </body>
 
