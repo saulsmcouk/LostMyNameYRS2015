@@ -8,6 +8,7 @@
     <!-- load MUI -->
     <link href="//cdn.muicss.com/mui-0.1.19/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-0.1.19/js/mui.min.js"></script>
+  <!--Load bootstrapp -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- load our stuffs -->
@@ -16,6 +17,11 @@
     <script src="/files/js/ui.js"></script>
     <style type="text/css">
       html, body, #map-canvas { height: 65%; width: 100%; margin: 0; padding: 0;}
+      .btn{
+        height: 90%;
+        width: 90%;
+        display: block;
+      }
     </style>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZdZeIsWeo51oL6ncknMn6cSPGPfUdKM8">
@@ -83,7 +89,7 @@ google.maps.event.addDomListener(window, 'load', function(){
 
     </div>
 
-    <div id="map-canvas"></div>
+    <!-- Views that need a map put this in:<div id="map-canvas"></div> -->
 
 </body>
 

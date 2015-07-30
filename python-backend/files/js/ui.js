@@ -15,6 +15,16 @@ $(document).ready(function () {
 
   renderOffers();
 
+  console.log("readu");
+  $("#Make_offer").submit(
+  function (e){
+    submitOffer();
+    e.preventDefault();
+    return false;
+
+  }
+  );
+
 });
 
 

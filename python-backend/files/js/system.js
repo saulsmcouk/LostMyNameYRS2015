@@ -1,19 +1,17 @@
-'use strict';
 
-$(document).ready(function () {
 
-});
+
 
 // LocationClient namespace
 var locationClient = {};
 
-locationClient.server = 'http://local:5000'; //Change for heroku, etc
+locationClient.server = 'http://localhost:5000'; //Change for heroku, etc
 
 // User object
 locationClient.user = {};
 
 // Default username
-locationClient.user.username = 'admin';
+locationClient.user.username = 'admin2';
 
 // Current location latLng
 
@@ -76,6 +74,8 @@ locationClient.setOfferDone = function (offerId, callback) {
   });
 };
 
+
+
 locationClient.addOffer = function (title, desc, ttl, location, callback) {
   $.post(locationClient.server + '/offer/add', {
     username: locationClient.user.username,
@@ -100,7 +100,7 @@ locationClient.sendMessage = function (to, message, callback) {
 
 locationClient.inbox = function (callback) {
   $.get(locationClient.server + '/message/inbox', {
-    username: 'admin2' // locationClient.user.username
+    username: locationClient.user.username // locationClient.user.username
   }, function (data) {
     callback(data);
   }, 'json');
@@ -113,3 +113,5 @@ locationClient.setMessageRead = function (messageId, callback) {
     callback(data);
   });
 };
+
+
