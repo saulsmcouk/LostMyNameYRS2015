@@ -44,7 +44,7 @@ function submitOffer() {
   // and then only add the one in code for your demo
   // That way you would only need one placeholder location like the one below.
 
-  var location = [50.6002, 0.9];
+  var location = [0, 0];
 
 
 
@@ -82,6 +82,7 @@ function renderOffers() {
       offerspanehtml += '<div class="offer row">';
       offerspanehtml += '  <div class="offer-title col-md-4"><h1>' + offer.title + '</h1></div';
       offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
+      offerspanehtml += offer.location;
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
       var pos = new google.maps.LatLng(offer.location[0], offer.location[1]);
@@ -104,17 +105,29 @@ function renderOffers() {
   });
 }
 
+function sendMessage(){
+  console.log("sendMesage");
+
+}
+
 function renderMessages() {
   alert("it ran");
+  locationClient.inbox(function(messages){
+  console.log(messages);
+  console.log(messages[0].content);
+  //Assemble the html for the inbox
+  inboxContent = '';
+  var arrayLength = messages.length;
+    for (var i = 0; i < arrayLength; i++) {
+      inboxContent+= '<ul>';
+      inboxContent += "<li>To: "+messages[i].to+"</li>";
+      inboxContent += "<li>From: "+messages[i].from+"</li>";
+      inboxContent +="<li>Content: "+messages[i].content+"</li>";
+      inboxContent+= "</ul>";
 
-  locationClient.inbox = function(callback) {
-    $.get(locationClient.server + '/message/inbox', {
-      username: locationClient.user.username // locationClient.user.username
-    }, function(data) {
-      callback(data);
-      alert(data);
-      console.log(data + " - messages");
-    }, 'json');
-  };
+}
+    $("#messages-inbox").html(inboxContent);
+  });
+
 
 }
