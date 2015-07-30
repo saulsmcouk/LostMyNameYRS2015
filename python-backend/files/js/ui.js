@@ -84,17 +84,18 @@ function renderOffers() {
       offerspanehtml += '  <div class="offer-description col-md-4"><p>' + offer.description + '</p> </div';
       offerspanehtml += '  <div class="offer-image col-md-4">' + '<img src="http://lorempixel.com/400/200/food/ " />' /* PUT SOME NICE PLACEHOLDERS IN HERE */ + '</div';
       //var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
-  var pos = new google.maps.LatLng(-25.363882,131.044922);
+  var pos = new google.maps.LatLng(offer.location[0],offer.location[1]);
 
       offerspanehtml += '</div>';
-//      console.log(offer.location);
-//      //Add a marker
-//      var marker = new google.maps.Marker({
-//      position: pos,
-//      map: window.map,
-//      title: offer.title
- // });
-
+      console.log(offer.location);
+      //Add a marker
+      var marker = new google.maps.Marker({
+      position: pos,
+      map: window.map,
+      title: offer.title
+ });
+marker.setMap(window.map);
+console.log("setmarker");
     });
 
     // Replace the HTML of anything with the class .show-offers with our constructed template
