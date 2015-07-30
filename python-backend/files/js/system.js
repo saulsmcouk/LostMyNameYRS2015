@@ -61,7 +61,8 @@ locationClient.getOfferNearMe = function (latLng, callback) {
   latLng = locationClient.latLngtoString(latLng);
   console.log(latLng);
   $.get(locationClient.server + '/offer/get/near_me/' + latLng, function (data) {
-    console.log(data);
+    console.log('Offer data');
+    console.log(data)
     callback(data);
   }, 'json');
 };
