@@ -28,6 +28,16 @@ $(document).ready(function() {
 
     }
   );
+  to = $("#to");
+  from = locationClient.user.username;
+  content = $("#content");
+  $("composeMessage").submit(
+    function(e){
+     sendMessage(to,from,content);
+      e.preventDefault();
+      return false;
+    }
+    )
 
 });
 
@@ -105,9 +115,9 @@ function renderOffers() {
   });
 }
 
-function sendMessage(){
+function sendMessage(to,from,content){
   console.log("sendMesage");
-
+  locationClient.sendMessage(to,from,content,function(){});
 }
 
 function renderMessages() {
