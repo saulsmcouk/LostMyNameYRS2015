@@ -18,7 +18,7 @@ def index():
 
 @app.route('/food-bank-locator')
 def food_bank_locator():
-  return flask.send_from_directory(app.static_folder, "food-bank-locator.html")
+    return flask.send_from_directory(app.static_folder, "food-bank-locator.html")
 
 @app.route('/files/<path:filename>')
 def send_js(filename):
