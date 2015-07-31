@@ -77,7 +77,7 @@
     </div>
   </nav>
   <div class="container">
-    <!--- Main switchable views --->
+    <!--- Main switchable views -->
     <div class="app-view" id="app-view-landing">
 
       {% include 'landing_view.html' %}
@@ -99,9 +99,15 @@
       {% include 'messages_view.html' %}
 
     </div>
+    <div class="app-view" id="app-view-about">
+      <h1>About</h1>
+      <p>Written by Saul Samuels Moselle, Donald Mackay, Theo Hinton-Hallows. With a little help from the great people of <a href="lostmy.name">Lost My Name</a>.</p>
+      <p>Research video:</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/_3wrdaQ7Xw8" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
   <!-- Views that need a map put this in:<div id="map-canvas"></div> -->
-<footer><a href="/food-bank-locator">Food Bank Locator</a></footer>
+<footer class="footer"><div class="text-center"><a href="/food-bank-locator">Food Bank Locator</a> | <a onclick="switchView('about')">About</a></div></footer>
 </body>
 
 </html>
