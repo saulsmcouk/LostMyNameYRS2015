@@ -15,3 +15,14 @@ border:none;
 border:0px solid black;
 padding:5;
 }
+.logo{
+
+height:auto;
+width:auto;
+margin-left:0;
+float:left;
+}
+p{
+clear:both;
+width:100%;
+}
