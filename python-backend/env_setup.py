@@ -2,7 +2,10 @@ import sys_modules.database as database
 
 from pymongo import MongoClient
 
-if !database.uri:
+if database.uri:
+  print "skip destroying db"
+else:
+  print "destroying db"
   c = MongoClient()
   c.drop_database('community')
 
