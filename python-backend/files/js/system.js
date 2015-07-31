@@ -70,7 +70,9 @@ locationClient.setOfferDone = function (offerId, callback) {
     id: offerId
   }, function (data) {
     callback(data);
+    
   });
+  
 };
 
 

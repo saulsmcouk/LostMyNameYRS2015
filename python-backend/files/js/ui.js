@@ -121,16 +121,17 @@ function sendMessage(to,from,content){
 function renderMessages() {
   locationClient.inbox(function(messages){
   //Assemble the html for the inbox
-  inboxContent = '';
+  inboxContent = '<table class="table table-hover"><tr><th>From</th><th>Content</th></tr>';
   var arrayLength = messages.length;
     for (var i = 0; i < arrayLength; i++) {
-      inboxContent+= '<ul>';
-      inboxContent += "<li>To: "+messages[i].to+"</li>";
-      inboxContent += "<li>From: "+messages[i].from+"</li>";
-      inboxContent +="<li>Content: "+messages[i].content+"</li>";
-      inboxContent+= "</ul>";
+      inboxContent+= '<tr>';
+      //Not neededinboxContent += "<li>To: "+messages[i].to+"</li>";
+      inboxContent += "<td>"+messages[i].from+"</td>";
+      inboxContent +="<td>"+messages[i].content+"</td>";
+      inboxContent+= "</tr>";
 
 }
+    inboxContent+="</table">
     $("#messages-inbox").html(inboxContent);
   });
 
@@ -140,6 +141,8 @@ function renderMessages() {
 function claimOffer(id) {
   locationClient.setOfferDone(id, function (returns) {
     alert("You have claimed this offer!");
+    
+    //sendMessage (who
     window.location.reload();
   });
 }
