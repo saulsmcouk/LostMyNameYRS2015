@@ -5,7 +5,7 @@
 // LocationClient namespace
 var locationClient = {};
 
-locationClient.server = 'http://localhost:5000'; //Change for heroku, etc
+locationClient.server = window.location.origin; //Change for heroku, etc
 
 // User object
 locationClient.user = {};
