@@ -1,11 +1,13 @@
+import os
 from pymongo import MongoClient
 
-client = MongoClient()
-
-client = MongoClient('localhost', 27017)
-
-# `community` database
-db = client.community;
+uri = os.environ.get('MONGOLAB_URI')
+if (uri):
+    client = MongoClient(uri)
+    db = client.get_default_database();
+else:
+    client = MongoClient('localhost', 27017)
+    db = client.community;
 
 # Database find wrapper
 

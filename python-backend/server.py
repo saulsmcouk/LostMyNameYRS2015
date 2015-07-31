@@ -1,6 +1,7 @@
 import flask
 from flask.ext.cors import CORS
 
+import os
 import sys_modules.database as db
 
 import api_modules.offer
@@ -8,11 +9,16 @@ import api_modules.message
 import api_modules.login
 
 app = flask.Flask(__name__, static_folder='files')
+app.debug = True
 cors = CORS(app);
 
 @app.route('/')
 def index():
     return flask.render_template('index.html')
+
+@app.route('/food-bank-locator')
+def food_bank_locator():
+  return flask.send_from_directory(app.static_folder, "food-bank-locator.html")
 
 @app.route('/files/<path:filename>')
 def send_js(filename):
@@ -58,4 +64,6 @@ def message_read():
     return api_modules.message.message_read(flask.request)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000,debug=True)
+   # Bind to PORT if defined, otherwise default to 5000.
+   port = int(os.environ.get('PORT', 5000))
+   app.run(host='0.0.0.0', port=port)
