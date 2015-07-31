@@ -1,6 +1,8 @@
 import os
 from pymongo import MongoClient
 
+phone_number = os.environ.get('PHONE_NUMBER')
+
 uri = os.environ.get('MONGOLAB_URI')
 if (uri):
     client = MongoClient(uri)

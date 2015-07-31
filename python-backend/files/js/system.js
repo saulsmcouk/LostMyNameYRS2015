@@ -11,7 +11,7 @@ locationClient.server = 'http://localhost:5000'; //Change for heroku, etc
 locationClient.user = {};
 
 // Default username
-locationClient.user.username = 'a';
+locationClient.user.username = 'admin';
 
 // Current location latLng
 
@@ -70,9 +70,9 @@ locationClient.setOfferDone = function (offerId, callback) {
     id: offerId
   }, function (data) {
     callback(data);
-    
+
   });
-  
+
 };
 
 

@@ -3,7 +3,7 @@ import json
 import pymongo
 import sys_modules.database as db
 from bson.objectid import ObjectId
-
+import sms
 def offer_add(request):
     coords = request.form.getlist('location')[0].split(',')
     coords_array =[float(coords[0]),float(coords[1])]
@@ -50,7 +50,8 @@ def offer_done(request):
     """Deletes the passed offer. Requires the offer id to be passed."""
 
     db.db_remove('offers', {'_id': ObjectId(request.form.getlist("id")[0])}, True)
-    
+    message = request.form.getlist("id")[0]+" has been claimed"
+    sms.send_sms(db.phone_number, message)
     return "did it"
 
 

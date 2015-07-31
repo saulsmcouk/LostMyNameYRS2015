@@ -10,8 +10,11 @@ else:
   c.drop_database('community')
 
 # Insert admin user
-database.db_insert( 'users', {'username': 'admin'} )
+database.db_insert( 'users', {'username': 'admin', 'number' : database.phone_number} )
 
 database.db_insert( 'offers', {'title': 'Loads of spare curries', 'description': "Come and get them", 'location': [51.60, 0.112], 'username': 'admin'});
 
 database.db_insert( 'offers', {'title': 'Fresh fruit and veg from greengrocer', 'description': "Come and get them", 'location': [51.40, 0.22], 'username': 'admin'});
+
+database.db_insert('messages', {'to': 'admin', 'from': 'admin1',  'content':'Hi admin 2, I like ur food'}
+  )
