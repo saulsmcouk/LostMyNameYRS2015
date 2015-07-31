@@ -2,7 +2,7 @@ import sys_modules.database as database
 
 from pymongo import MongoClient
 
-if database.uri:
+if !database.uri:
   c = MongoClient()
   c.drop_database('community')
 
