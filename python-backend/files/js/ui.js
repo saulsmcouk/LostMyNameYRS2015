@@ -58,7 +58,7 @@ function submitOffer() {
   // and then only add the one in code for your demo
   // That way you would only need one placeholder location like the one below.
 
-  var location = [51.5333, 0.0837];
+  var location = [52.4786556, -1.9102102];
 
 
 

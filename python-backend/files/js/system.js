@@ -30,7 +30,7 @@ try {
 
 } catch (e) {
   // hackney
-  locationClient.currentLocation = [51.5333, 0.0833];
+  locationClient.currentLocation = [52.4786556, -1.9102102];
 }
 
 
