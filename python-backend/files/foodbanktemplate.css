@@ -4,7 +4,7 @@ text-align: center;
 }
 img {
 width:100%;
-height:auto;
+height:330px;
 max-width:640px
 }
 marquee {
@@ -25,4 +25,5 @@ float:left;
 p{
 clear:both;
 width:100%;
+font-size:1.2em;
 }
